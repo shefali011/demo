@@ -15,25 +15,28 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
-    public List<Student> getStudents(){
-        return studentService.getStudents();
-    }
+//    @GetMapping
+//    public List<Student> getStudents(){
+//        return studentService.getStudents();
+//    }
 
-    @PostMapping
-    public void registerNewStudent(@RequestBody Student student){
-        studentService.addNewStudent(student);
-    }
+    @GetMapping(path = "{email}")
+    public Student getStudent(@PathVariable("email") String email){return studentService.getStudent(email);}
 
-    @DeleteMapping(path = "{studentId}")
-    public void deleteStudent(@PathVariable("studentId") Long studentId) {
-        studentService.deleteStudent(studentId);
-    }
-
-    @PutMapping(path = "{studentId}")
-    public void updateStudent(@PathVariable("studentId") Long studentId,
-                              @RequestParam(required = false) String name,
-                              @RequestParam(required = false) String email) {
-        studentService.updateStudent(studentId, name, email);
-    }
+//    @PostMapping
+//    public void registerNewStudent(@RequestBody Student student){
+//        studentService.addNewStudent(student);
+//    }
+//
+//    @DeleteMapping(path = "{studentId}")
+//    public void deleteStudent(@PathVariable("studentId") Long studentId) {
+//        studentService.deleteStudent(studentId);
+//    }
+//
+//    @PutMapping(path = "{studentId}")
+//    public void updateStudent(@PathVariable("studentId") Long studentId,
+//                              @RequestParam(required = false) String name,
+//                              @RequestParam(required = false) String email) {
+//        studentService.updateStudent(studentId, name, email);
+//    }
 }
